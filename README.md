@@ -1,9 +1,19 @@
-# DMRETRIEVER
-# DMRetriever: A Family of Models for Improved Text Retrieval in Disaster Management
+# 🧭 DMRetriever: A Family of Models for Improved Text Retrieval in Disaster Management  
 
-## 📖 Introduction
+## 📚 Table of Contents  
+1. [Introduction](#-introduction)  
+2. [Model Family](#-model-family)  
+3. [Leaderboard](#-leaderboard)  
+4. [Training Framework](#-three-stage-training-framework)  
+5. [Evaluation](#-evaluation)  
+6. [Datasets](#-training-validation-and-test-dataset)  
+7. [Model Checkpoints](#-model-checkpoints)  
 
-Effective and efficient access to relevant information is essential for disaster management. However, no retrieval model is specialized for disaster management, and existing general-domain models fail to handle the varied search intents inherent to disaster management scenarios, resulting in inconsistent and unreliable performance. To this end, we introduce DMRetriever, the first series of dense retrieval models (33M to 7.6B) tailored for this domain. It is trained through a novel three-stage framework of bidirectional attention adaptation, unsupervised contrastive pre-training, and difficulty-aware progressive instruction fine-tuning, using high-quality data generated through an advanced data refinement pipeline. Comprehensive experiments demonstrate that DMRetriever achieves state-of-the-art (SOTA) performance across all six search intents at every model scale. Moreover, DMRetriever is highly parameter-efficient, with 596M model outperforming baselines over 13.3$\times$ larger and 33M model exceeding baselines with only 7.6\% of their parameters.
+---
+
+## 📖 Introduction  
+
+Effective and efficient access to relevant information is essential for disaster management. However, no retrieval model is specialized for disaster management, and existing general-domain models fail to handle the varied search intents inherent to disaster management scenarios, resulting in inconsistent and unreliable performance. To this end, we introduce DMRetriever, the first series of dense retrieval models (33M to 7.6B) tailored for this domain. It is trained through a novel three-stage framework of bidirectional attention adaptation, unsupervised contrastive pre-training, and difficulty-aware progressive instruction fine-tuning, using high-quality data generated through an advanced data refinement pipeline. Comprehensive experiments demonstrate that DMRetriever achieves state-of-the-art (SOTA) performance across all six search intents at every model scale. Moreover, DMRetriever is highly parameter-efficient, with 596M model outperforming baselines over 13.3$	imes$ larger and 33M model exceeding baselines with only 7.6\% of their parameters.
 
 <p align="center">
   <img src="DMRetriever_workflow.png" width="600"/>
@@ -11,28 +21,28 @@ Effective and efficient access to relevant information is essential for disaster
 
 ---
 
-## 🚀 Model Family
+## 🚀 Model Family  
 
-DMRetriever is released in multiple scales to support different deployment scenarios:
+DMRetriever is released in multiple scales to support a range of deployment environments, from lightweight on-device use to high-capacity research applications:  
 
-- **Small** (33M / 109M) — lightweight models for resource-constrained environments  
-- **Medium** (335M) — balanced accuracy and efficiency  
-- **Large** (596M / 1.5B) — strong performance with higher capacity  
-- **XL** (4B / 7.6B) — the strongest performance version
+- **Small** (33M / 109M) — Lightweight models for resource-constrained or edge environments  
+- **Medium** (335M) — Balanced accuracy and computational efficiency  
+- **Large** (596M / 1.5B) — Strong performance with enhanced representational capacity  
+- **XL** (4B / 7.6B) — Best-in-class retrieval effectiveness for large-scale deployments  
 
 ---
 
-# 📊 Leaderboard
+## 📊 Leaderboard  
 
-
-*Results across six search intents at various scales in DisastIR-Test.*
+*Results across six search intents at various scales in DisastIR-Test.*  
 > **Notation:**  
-> - **Bold** = best in size group   
-> - `†` = statistically significant improvement (*p* < 0.05, one-tailed Wilcoxon signed-rank test)
+> - **Bold** = best in size group  
+> - <u>Underline</u> = second best  
+> - `†` = statistically significant improvement (*p* < 0.05, one-tailed Wilcoxon signed-rank test)  
 
 ---
 
-## 🧩 Small Size (≤109M)
+### 🧩 Small Size (≤109M)
 
 | Model | Scale | QA | QAdoc | TW | FC | NLI | STS | Avg. |
 |:--|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
@@ -48,7 +58,7 @@ DMRetriever is released in multiple scales to support different deployment scena
 
 ---
 
-## ⚙️ Medium Size (137M–335M)
+### ⚙️ Medium Size (137M–335M)
 
 | Model | Scale | QA | QAdoc | TW | FC | NLI | STS | Avg. |
 |:--|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
@@ -62,7 +72,7 @@ DMRetriever is released in multiple scales to support different deployment scena
 
 ---
 
-## 🚀 Large Size (434M–1.5B)
+### 🚀 Large Size (434M–1.5B)
 
 | Model | Scale | QA | QAdoc | TW | FC | NLI | STS | Avg. |
 |:--|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
@@ -77,7 +87,7 @@ DMRetriever is released in multiple scales to support different deployment scena
 
 ---
 
-## 🧠 XL Size (≥4B)
+### 🧠 XL Size (≥4B)
 
 | Model | Scale | QA | QAdoc | TW | FC | NLI | STS | Avg. |
 |:--|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
@@ -95,5 +105,63 @@ DMRetriever is released in multiple scales to support different deployment scena
 
 ---
 
+## 🧩 Three-stage Training Framework  
+
+DMRetriever is trained via a **three-stage pipeline** designed to adapt both encoder-only and decoder-only architectures effectively to disaster-domain retrieval tasks:  
+
+1. **Bidirectional Attention Adaptation**  
+   - Adjusts attention mechanisms in decoder-only backbones to improve bidirectional context modeling.  
+   - Script: `sh/PT_BiAttn_Ada.sh`  
+
+2. **Unsupervised Contrastive Pre-training**  
+   - Learns robust disaster-domain representations using unsupervised contrastive learning.  
+   - Scripts:  
+     - Decoder-only: `sh/PT_S2_decoder.sh`  
+     - Encoder-only: `sh/PT_S2_encoder.sh`  
+
+3. **Difficulty-aware Progressive Instruction Fine-tuning**  
+   - Fine-tunes models with progressively more complex supervision to enhance generalization.  
+   - Scripts:  
+     - Decoder-only: `sh/FT_decoder.sh`  
+     - Encoder-only: `sh/FT_encoder.sh`  
+
+---
+
+## 🧪 Evaluation  
+
+DMRetriever provides flexible evaluation tools for both checkpoint-level and folder-level assessment:  
+
+- **Evaluate multiple checkpoints** during training:  
+  ```bash
+  sh/Eva_ckpt_folder_level.sh
+  ```
+- **Evaluate a single checkpoint** on the test set:  
+  ```bash
+  sh/Eva_single_ckpt_level.sh
+  ```
+
+---
+
+## 📂 Training, Validation, and Test Dataset  
+
+Due to repository storage limitations (<200 MB), the full datasets used in pre-training, validation, and testing cannot be uploaded during the anonymous review phase.  
+
+To facilitate reproducibility and review:  
+- 5,000-sample subsets of both pre-training and fine-tuning data are provided.  
+- Query and passage files:  
+  - `DisastIR_devlite_query.json`  
+  - `DisastIR_test_query.json`  
+  - `DisastIR_devlite_passage.json`
+in the "Data" section in our submission metadata.  
+
+The full dataset will be publicly released after the anonymous review phase to support further advancement in disaster-domain retrieval research.  
+
+---
+
+## 💾 Model Checkpoints  
+
+Currently, due to storage constraints, only the 33M variant checkpoint is included in the "Software" section in our submission metadata for review purposes.  
+
+After the anonymous review stage, all DMRetriever checkpoints (33M–7.6B) will be publicly released to foster open research and benchmarking in disaster management information retrieval.  
 
 
