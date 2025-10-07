@@ -6,4 +6,4 @@ python DMRetriever/eva/orchestrate/pipeline.py \
   --rebuild_query_emb \
   --ckpt_type "full" \
   --batch 16 \
-  --parent Test/DM_Small
+  --parent Test/DM_33M
