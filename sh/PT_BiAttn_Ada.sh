@@ -2,8 +2,8 @@
 set -euo pipefail
 
 python -m DMRetriever.BiAttn_Ada.run_mlm \
-  --model_name_or_path RAG_FT/data/A2_model_cache/qwen3-0.6B \
-  --train_file RAG_FT/data/A3_PT_set/raw_txt/merged_disaster_wikitext.txt \
+  --model_name_or_path path_to_backbone \
+  --train_file path_pre_train_data \
   --per_device_train_batch_size 12 \
   --gradient_accumulation_steps 22 \
   --do_train \
@@ -13,7 +13,7 @@ python -m DMRetriever.BiAttn_Ada.run_mlm \
   --data_collator_type default \
   --mlm_probability 0.2 \
   --overwrite_output_dir \
-  --output_dir RAG_FT/data/D_train_output/PT_LLM_S1/DM_0.6B_wikiAnddomain \
+  --output_dir path_to_save_model_ckpt \
   --save_steps 100 \
   --lora_r 16 \
   --evaluation_strategy steps \
@@ -26,5 +26,5 @@ python -m DMRetriever.BiAttn_Ada.run_mlm \
   --learning_rate 2e-5 \
   --warmup_ratio 0.01 \
   --overwrite_cache False \
-  --cache_dir RAG_FT/data/cache_data \
+  --cache_dir path_to_save_cache_data \
   --bf16
