@@ -3,24 +3,7 @@
 
 ## 📖 Introduction
 
-Effective and efficient access to accurate and relevant information is essential for disaster management. However, existing general-domain models fail to achieve consistent state-of-the-art (SOTA) performance across diverse search intents.
-
-To this end, we introduce **DMRetriever**, a family of dense retrieval models tailored for disaster management. DMRetriever is trained through a novel three-stage framework:
-
-1. **Bidirectional Attention Adaptation**  
-2. **Unsupervised Contrastive Pre-training**  
-3. **Difficulty-Aware Progressive Instruction Fine-tuning**
-
-Training leverages high-quality data generated through an advanced **data refinement pipeline**:
-1. **Domain-specific data synthesis**
-2. **Mutual-agreement-based filtering**
-3. **Difficulty-aware hard negative mining**
-
-Comprehensive experiments on the **DisastIR benchmark** (the only public Information Retrieval benchmark for disaster management) demonstrate that DMRetriever achieves **SOTA performance across all six disaster-related search intents at every model scale**. Moreover, DMRetriever is highly **parameter-efficient**:  
-- The **596M model** outperforms baselines over **13.3× larger**.  
-- The **33M model** exceeds baselines with only **7.6% of their parameters**.
-
-We will release the code, model checkpoints, training data, and evaluation scripts to facilitate future research. Please stay tuned!
+Effective and efficient access to relevant information is essential for disaster management. However, no retrieval model is specialized for disaster management, and existing general-domain models fail to handle the varied search intents inherent to disaster management scenarios, resulting in inconsistent and unreliable performance. To this end, we introduce DMRetriever, the first series of dense retrieval models (33M to 7.6B) tailored for this domain. It is trained through a novel three-stage framework of bidirectional attention adaptation, unsupervised contrastive pre-training, and difficulty-aware progressive instruction fine-tuning, using high-quality data generated through an advanced data refinement pipeline. Comprehensive experiments demonstrate that DMRetriever achieves state-of-the-art (SOTA) performance across all six search intents at every model scale. Moreover, DMRetriever is highly parameter-efficient, with 596M model outperforming baselines over 13.3$\times$ larger and 33M model exceeding baselines with only 7.6\% of their parameters.
 
 ---
 
