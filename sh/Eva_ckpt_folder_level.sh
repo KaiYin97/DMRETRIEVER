@@ -40,7 +40,7 @@ while true; do
 
     echo "[$(date +'%F %T')] ▶ Starting evaluation: GPU $GPU_ID → log $LOG_FILE"
     CUDA_VISIBLE_DEVICES=$GPU_ID \
-      python RAG_FT/code/eva/orchestrate/ckpt_batch.py \
+      python DMRetriever/code/eva/orchestrate/ckpt_batch.py \
         "${PARAMS[@]}" \
       > "$LOG_FILE" 2>&1 &
   done
