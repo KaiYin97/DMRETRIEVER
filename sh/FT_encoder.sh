@@ -3,9 +3,9 @@ set -euo pipefail
 
 python -m torch.distributed.run --nproc_per_node 2 --master_port 29601 -m DMRetriever.encoder \
   --do_train \
-  --model_name_or_path RAG_FT/data/A2_model_cache/Base_afterPT \
+  --model_name_or_path path_to_ckpt_after_PT \
   --cache_dir ./cache/model \
-  --train_data RAG_FT/data/A_FT_set/label_pool_inf_within_top2 \
+  --train_data path_to_fine_tuning_data \
   --cache_path ./cache/data \
   --train_group_size 10 \
   --query_max_len 512 \
@@ -14,7 +14,7 @@ python -m torch.distributed.run --nproc_per_node 2 --master_port 29601 -m DMRetr
   --query_instruction_for_retrieval 'Represent this sentence for searching relevant passages: ' \
   --query_instruction_format '{}: {}' \
   --knowledge_distillation False \
-  --output_dir RAG_FT/data/D_train_output/FT_encoder/Ablation_CBF_Base \
+  --output_dir path_to_save_model_ckpt \
   --overwrite_output_dir \
   --learning_rate 1e-5 \
   --bf16 \
