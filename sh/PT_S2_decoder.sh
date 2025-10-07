@@ -1,31 +1,10 @@
 #!/bin/bash
-set -e  # 出错就退出脚本 
+set -e 
 
 python -m DMRetriever.decoder \
-    --model_name_or_path RAG_FT/data/A2_model_cache/merged_Qwen3bi-0.6B \
+    --model_name_or_path path_to_backbone_after_PT_BiAttn_Ada \
     --cache_dir ./cache/model \
-    --train_data RAG_FT/data/A3_PT_set/new_PT_final/QA_eli5.jsonl \
-        RAG_FT/data/A3_PT_set/new_PT_final/ccnet.jsonl  \
-        RAG_FT/data/A3_PT_set/new_PT_final/domain_LLM_filter_remained.jsonl \
-        RAG_FT/data/A3_PT_set/new_PT_final/FC_fever.jsonl \
-        RAG_FT/data/A3_PT_set/new_PT_final/NLI_all_nli.jsonl \
-        RAG_FT/data/A3_PT_set/new_PT_final/NLI_x_nli.jsonl \
-        RAG_FT/data/A3_PT_set/new_PT_final/npr.jsonl \
-        RAG_FT/data/A3_PT_set/new_PT_final/QA_gooaq.jsonl \
-        RAG_FT/data/A3_PT_set/new_PT_final/QA_NQ.jsonl \
-        RAG_FT/data/A3_PT_set/new_PT_final/QA_paq_5M.jsonl \
-        RAG_FT/data/A3_PT_set/new_PT_final/QA_squad.jsonl \
-        RAG_FT/data/A3_PT_set/new_PT_final/QAdoc_hotpotqa.jsonl \
-        RAG_FT/data/A3_PT_set/new_PT_final/QAdoc_msdoc.jsonl \
-        RAG_FT/data/A3_PT_set/new_PT_final/QAdoc_nf.jsonl \
-        RAG_FT/data/A3_PT_set/new_PT_final/s2orc.jsonl \
-        RAG_FT/data/A3_PT_set/new_PT_final/sentence_compression.jsonl \
-        RAG_FT/data/A3_PT_set/new_PT_final/STS_altlex.jsonl \
-        RAG_FT/data/A3_PT_set/new_PT_final/STS_quora_dup.jsonl \
-        RAG_FT/data/A3_PT_set/new_PT_final/STS_quora.jsonl \
-        RAG_FT/data/A3_PT_set/new_PT_final/title_body_agnews.jsonl \
-        RAG_FT/data/A3_PT_set/new_PT_final/Twitter.jsonl \
-        RAG_FT/data/A3_PT_set/new_PT_final/xsum.jsonl \
+    --train_data path_to_pre_train_data \
     --use_lora \
     --lora_rank 16 \
     --lora_alpha 32 \
@@ -39,7 +18,7 @@ python -m DMRetriever.decoder \
     --query_instruction_for_retrieval 'Represent this sentence for searching relevant passages: ' \
     --query_instruction_format '{}: {}' \
     --knowledge_distillation False \
-    --output_dir RAG_FT/data/D_train_output/PT/Qwen3Bi_all_data_420Gib \
+    --output_dir path_to_save_model_ckpt \
     --overwrite_output_dir \
     --learning_rate 1e-4 \
     --bf16 \
