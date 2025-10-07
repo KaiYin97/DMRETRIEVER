@@ -118,7 +118,6 @@ DMRetriever is trained via a **three-stage pipeline** designed to adapt both enc
      - Encoder-only: `sh/PT_S2_encoder.sh`  
 
 3. **Difficulty-aware Progressive Instruction Fine-tuning**  
-   - Fine-tunes models with progressively more complex supervision to enhance generalization.  
    - Scripts:  
      - Decoder-only: `sh/FT_decoder.sh`  
      - Encoder-only: `sh/FT_encoder.sh`  
