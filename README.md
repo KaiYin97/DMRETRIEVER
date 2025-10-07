@@ -28,7 +28,7 @@ DMRetriever is released in multiple scales to support a range of deployment envi
 - **Small** (33M / 109M) — Lightweight models for resource-constrained or edge environments  
 - **Medium** (335M) — Balanced accuracy and computational efficiency  
 - **Large** (596M / 1.5B) — Strong performance with enhanced representational capacity  
-- **XL** (4B / 7.6B) — Best-in-class retrieval effectiveness for large-scale deployments  
+- **XL** (4B / 7.6B) — The best-performing IR models
 
 ---
 
@@ -107,14 +107,12 @@ DMRetriever is released in multiple scales to support a range of deployment envi
 
 ## 🧩 Three-stage Training Framework  
 
-DMRetriever is trained via a **three-stage pipeline** designed to adapt both encoder-only and decoder-only architectures effectively to disaster-domain retrieval tasks:  
+DMRetriever is trained via a **three-stage pipeline** designed to adapt both encoder-only and decoder-only architectures effectively to disaster management domain:  
 
-1. **Bidirectional Attention Adaptation**  
-   - Adjusts attention mechanisms in decoder-only backbones to improve bidirectional context modeling.  
+1. **Bidirectional Attention Adaptation**   
    - Script: `sh/PT_BiAttn_Ada.sh`  
 
 2. **Unsupervised Contrastive Pre-training**  
-   - Learns robust disaster-domain representations using unsupervised contrastive learning.  
    - Scripts:  
      - Decoder-only: `sh/PT_S2_decoder.sh`  
      - Encoder-only: `sh/PT_S2_encoder.sh`  
