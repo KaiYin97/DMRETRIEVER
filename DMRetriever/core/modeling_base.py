@@ -152,17 +152,6 @@ class BaseEmbedderModel(nn.Module):
     def distill_loss(kd_loss_type, teacher_targets, student_scores, group_size=None):
         if kd_loss_type == "kl_div":
             return -torch.mean(torch.sum(torch.log_softmax(student_scores, dim=-1) * teacher_targets, dim=-1))
-        elif kd_loss_type == "m3_kd_loss":
-            labels = torch.arange(student_scores.size(0), device=student_scores.device, dtype=torch.long) * group_size
-            loss = 0
-            mask = torch.zeros_like(student_scores)
-            for i in range(group_size):
-                tgt = labels + i
-                sc = student_scores + mask
-                l = torch.nn.functional.cross_entropy(sc, tgt, reduction="none")
-                loss += torch.mean(teacher_targets[:, i] * l)
-                mask = torch.scatter(mask, dim=-1, index=tgt.unsqueeze(-1), value=torch.finfo(student_scores.dtype).min)
-            return loss
         else:
             raise ValueError(f"Invalid kd_loss_type: {kd_loss_type}")
 
