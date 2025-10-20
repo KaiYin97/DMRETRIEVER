@@ -161,4 +161,15 @@ Currently, due to storage constraints, only the 33M variant checkpoint is includ
 
 After the anonymous review stage, all DMRetriever checkpoints (33M–7.6B) will be publicly released to foster open research and benchmarking in disaster management information retrieval.  
 
+---
+## Citation
 
+If you find this repository helpful, please kindly consider citing the corresponding paper as shown below. Thanks!
+
+```bibtex
+@article{yin2025dmretriever,
+    title={DMRETRIEVER: A Family of Models for Improved Text Retrieval in Disaster Management},
+    author={Yin, Kai and Dong, Xiangjue and Liu, Chengkai and Lin Allen and Shi, Lingfeng and Mostafavi, Ali and Caverlee, James},
+    journal={arXiv preprint arXiv:2510.15087},
+    year={2025}
+}
