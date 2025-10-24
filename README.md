@@ -37,7 +37,7 @@ DMRetriever is released in multiple scales to support a range of deployment envi
 
 ## 📊 Leaderboard  
 
-*Results across six search intents at various scales in DisastIR-Test.*  
+*Results across six search intents at various scales in [DisastIR-Test](https://huggingface.co/datasets/DMIR01/DisastIR-DevLite).*  
 > **Notation:**  
 > - **Bold** = best in size group  
 > - <u>Underline</u> = second best  
