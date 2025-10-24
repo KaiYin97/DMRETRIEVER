@@ -6,8 +6,11 @@
 3. [Leaderboard](#-leaderboard)  
 4. [Training Framework](#-three-stage-training-framework)  
 5. [Evaluation](#-evaluation)  
-6. [Datasets](#-training-validation-and-test-dataset)  
-7. [Model Checkpoints](#-model-checkpoints)  
+6. [Datasets](#-training-validation-and-test-datasets)
+8. [Model Checkpoints](#-model-checkpoints)
+9. [Usage](#-usage)
+10. [Citation](#-citation)
+    
 
 ---
 
@@ -139,30 +142,49 @@ DMRetriever provides flexible evaluation tools for both checkpoint-level and fol
 
 ---
 
-## 📂 Training, Validation, and Test Dataset  
+## 📂 Training, Validation, and Test Datasets
 
-Due to repository storage limitations (<200 MB), the full datasets used in pre-training, validation, and testing cannot be uploaded during the anonymous review phase.  
+The **DisastIR** benchmark provides separate datasets for **training**, **validation**, and **testing**, designed to support both efficient model development and comprehensive evaluation.
 
-To facilitate reproducibility and review:  
-- 5,000-sample subsets of both pre-training and fine-tuning data are provided.  
-- Query and passage files:  
-  - `DisastIR_devlite_query.json`  
-  - `DisastIR_test_query.json`  
-  - `DisastIR_devlite_passage.json`
-in the "Data" section in our submission metadata.  
+- 🧠 **Training Set:**  
+  Available at [**DMRetriever_MTT**](https://huggingface.co/datasets/DMIR01/DMRetriever_MTT).  
+  This dataset is used for training retrieval and ranking models in the disaster domain.
 
-The full dataset will be publicly released after the anonymous review phase to support further advancement in disaster-domain retrieval research.  
+- ⚙️ **Validation & Test Sets:**  
+  Available at [**DisastIR-Devlite**](https://huggingface.co/datasets/DMIR01/DisastIR-DevLite).  
+  It includes:
+  - **DisastIR-Devlite** — a lightweight validation subset for rapid and reliable model development.  
+  - **DisastIR-Test** — the official test set for final model evaluation on the full DisastIR corpus.
+
+Together, these datasets form a **complete pipeline** for developing and benchmarking disaster-domain information retrieval systems —  
+from training and validation to rigorous final testing.
 
 ---
 
 ## 💾 Model Checkpoints  
 
-Currently, due to storage constraints, only the 33M variant checkpoint is included in the "Software" section in our submission metadata for review purposes.  
+All models are publicly available in the following HuggingFace repository.
 
-After the anonymous review stage, all DMRetriever checkpoints (33M–7.6B) will be publicly released to foster open research and benchmarking in disaster management information retrieval.  
+| **Model** | **Description** | **Backbone** | **Backbone Type** | **Hidden Size** | **#Layers** |
+|:--|:--|:--|:--|:--:|:--:|
+| [DMRetriever-33M](https://huggingface.co/DMIR01/DMRetriever-33M) | Base 33M variant | MiniLM | Encoder-only | 384 | 12 |
+| [DMRetriever-33M-PT](https://huggingface.co/DMIR01/DMRetriever-33M-PT) | Pre-trained version of 33M | MiniLM | Encoder-only | 384 | 12 |
+| [DMRetriever-109M](https://huggingface.co/DMIR01/DMRetriever-109M) | Base 109M variant | BERT-base-uncased | Encoder-only | 768 | 12 |
+| [DMRetriever-109M-PT](https://huggingface.co/DMIR01/DMRetriever-109M-PT) | Pre-trained version of 109M | BERT-base-uncased | Encoder-only | 768 | 12 |
+| [DMRetriever-335M](https://huggingface.co/DMIR01/DMRetriever-335M) | Base 335M variant | BERT-large-uncased-WWM | Encoder-only | 1024 | 24 |
+| [DMRetriever-335M-PT](https://huggingface.co/DMIR01/DMRetriever-335M-PT) | Pre-trained version of 335M | BERT-large-uncased-WWM | Encoder-only | 1024 | 24 |
+| [DMRetriever-596M](https://huggingface.co/DMIR01/DMRetriever-596M) | Base 596M variant | Qwen3-0.6B | Decoder-only | 1024 | 28 |
+| [DMRetriever-596M-PT](https://huggingface.co/DMIR01/DMRetriever-596M-PT) | Pre-trained version of 596M | Qwen3-0.6B | Decoder-only | 1024 | 28 |
+| [DMRetriever-4B](https://huggingface.co/DMIR01/DMRetriever-4B) | Base 4B variant | Qwen3-4B | Decoder-only | 2560 | 36 |
+| [DMRetriever-4B-PT](https://huggingface.co/DMIR01/DMRetriever-4B-PT) | Pre-trained version of 4B | Qwen3-4B | Decoder-only | 2560 | 36 |
+| [DMRetriever-7.6B](https://huggingface.co/DMIR01/DMRetriever-7.6B) | Base 7.6B variant | Qwen3-8B | Decoder-only | 4096 | 36 |
+| [DMRetriever-7.6B-PT](https://huggingface.co/DMIR01/DMRetriever-7.6B-PT) | Pre-trained version of 7.6B | Qwen3-8B | Decoder-only | 4096 | 36 |
+ 
+## 🚀 Usage  
+Please refer to each model’s [Hugging Face page](https://huggingface.co/DMIR01) for specific usage instructions, including input format, embedding extraction, and evaluation examples.
 
 ---
-## Citation
+## 🧾 Citation 
 
 If you find this repository helpful, please kindly consider citing the corresponding paper as shown below. Thanks!
 
