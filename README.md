@@ -156,6 +156,20 @@ The **DisastIR** benchmark provides separate datasets for **training**, **valida
   - **DisastIR-Devlite** — a lightweight validation subset for rapid and reliable model development.  
   - **DisastIR-Test** — the official test set for final model evaluation on the full DisastIR corpus.
 
+<p align="left">
+  <img src="Devlite_and_full.PNG" width="300"/>
+</p>
+
+**Figure1:** Efficiency comparison between *DisastIR-Devlite* and *DisastIR-DevFull*.
+
+| Model                 | QA     | QAdoc  | TW     | FC     | NLI    | STS    | Overall |
+|------------------------|--------|--------|--------|--------|--------|--------|----------|
+| **DMRetriever-33M**   | 0.8467 | 0.7504 | 0.7326 | 0.8859 | 0.8610 | 0.7255 | 0.9008   |
+| **DMRetriever-596M**  | 0.8995 | 0.7937 | 0.8042 | 0.9101 | 0.8730 | 0.7725 | 0.9033   |
+
+**Table 1.** *Effectiveness of DisastIR-Devlite.*  Kendall’s τ correlation between **DisastIR-Devlite** and **DisastIR-DevFull** across multiple subtasks.
+
+
 Together, these datasets form a **complete pipeline** for developing and benchmarking disaster-domain information retrieval systems —  
 from training and validation to rigorous final testing.
 
