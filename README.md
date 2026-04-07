@@ -1,5 +1,9 @@
 # 🧭 DMRetriever: A Family of Models for Improved Text Retrieval in Disaster Management  
 
+## 📰 News
+- **[April/2026]** Our *DMRetriever* has been accepted to **ACL 2026 Main** 🎉  
+- **[Oct/2025]** *DMRetriever* is now publicly available at [Hugging Face Models](https://huggingface.co/DMIR01/DMRetriever)
+
 ## 📚 Table of Contents  
 1. [Introduction](#-introduction)  
 2. [Model Family](#-model-family)  
